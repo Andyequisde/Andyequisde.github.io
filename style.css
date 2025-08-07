@@ -1,0 +1,83 @@
+/* Agrega esto en style.css */
+.navbar {
+    background-color: #af05a1;
+    padding: 10px 0;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.navbar li {
+    margin: 0 15px;
+}
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.navbar a:hover {
+    color: #333;
+}/*imagen de fondo*/
+body {
+    background-image: url('imagen.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+/* Overlay semitransparente para fondo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.5); /* Cambia el color y opacidad aquí */
+    z-index: 0;
+    pointer-events: none;
+}
+body > * {
+    position: relative;
+    z-index: 1;
+}
+.fade-in {                /* Aplica la animación al cargar */
+    opacity: 0;           /* Empieza invisible */
+    animation: aparecer 2s forwards; /* 2 segundos de animación */
+}
+
+@keyframes aparecer {    /* Define la animación */
+    to { opacity: 1; }    /* Termina completamente visible */
+}
+/*---------------------clase de catalogo---------------------------------------*/
+
+.catalogo-item { /* Contenedor de cada producto */
+    display: flex; /* Muestra imagen e info en fila */
+    align-items: center; /* Centra verticalmente */
+    margin-bottom: 30px; /* Espacio entre productos */
+}
+.catalogo-img { /* Imagen del producto */
+    width: 200px; /* Ancho fijo */
+    height: auto; /* Altura automática */
+    margin-right: 20px; /* Espacio a la derecha de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+}
+.catalogo-info { /* Información del producto */
+    flex: 1; /* Ocupa el espacio restante */
+}
+
+/* Responsive para celulares */
+@media (max-width: 600px) { /* Si la pantalla es menor a 600px */
+    .catalogo-item {
+        flex-direction: column; /* Cambia a columna */
+        align-items: flex-start; /* Alinea a la izquierda */
+    }
+    .catalogo-img {
+        margin-right: 0; /* Quita el margen derecho */
+        margin-bottom: 10px; /* Espacio debajo de la imagen */
+        width: 100%; /* Imagen ocupa todo el ancho */
+    }
+}
