@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="catalogo.html">Catalogo</a></li>
-            <li><a href="pedidos.html">Pedidos</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="politicas.html">Politicas</a></li>
-        </ul>
-    </nav>
+    <nav class="navbar"> <!-- Barra de navegación -->
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span> <!-- Icono hamburguesa -->
+    <ul id="nav-list"> <!-- Lista de enlaces -->
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catalogo</a></li>
+        <li><a href="pedidos.html">Pedidos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="politicas.html">Politicas</a></li>
+    </ul>
+</nav>
+<script>
+function toggleMenu() { // Muestra/oculta el menú en móvil
+    var nav = document.getElementById('nav-list'); // Selecciona la lista
+    nav.classList.toggle('show'); // Alterna la clase 'show'
+}
+</script>
     <div class="contenedor fade-in">
         <h1>Ej nose 
         </h1>

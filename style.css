@@ -6,12 +6,14 @@
 .navbar ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
+     width: 100%; /* Ocupa todo el ancho disponible */
 }
 .navbar li {
-    margin: 0 15px;
+    flex: 1; /* Cada elemento ocupa el mismo espacio */
+    text-align: center; /* Centra el texto dentro de cada elemento */
 }
 .navbar a {
     text-decoration: none;
@@ -20,9 +22,44 @@
 }
 .navbar a:hover {
     color: #333;
-}/*imagen de fondo*/
+}
+.menu-icon { /* Icono hamburguesa */
+    display: none; /* Oculto por defecto */
+    font-size: 2em; /* Tamaño grande */
+    color: #fff; /* Color blanco */
+    cursor: pointer; /* Cursor de mano */
+    margin-left: 20px; /* Espacio a la izquierda */
+}
+
+@media (max-width: 600px) { /* Para celulares */
+    .navbar ul { 
+        display: none; /* Oculta el menú por defecto */
+        flex-direction: column; /* Menú vertical */
+        width: 100%; /* Ocupa todo el ancho */
+        background: #af05a1; /* Fondo igual al navbar */
+        position: absolute; /* Posición absoluta */
+        left: 0; /* Alineado a la izquierda */
+        top: 50px; /* Debajo del navbar */
+        z-index: 10; /* Encima del fondo */
+    }
+    .navbar ul.show { 
+        display: flex; /* Muestra el menú cuando tiene la clase 'show' */
+    }
+    .menu-icon { 
+        display: block; /* Muestra el icono hamburguesa */
+    }
+    .navbar { 
+        position: relative; /* Para posicionar el menú */
+    }
+    .navbar li {
+        text-align: left; /* Alinea texto a la izquierda */
+        padding: 10px 20px; /* Espaciado en los enlaces */
+    }
+}
+
+/*-----------------------imagen de fondo---------------------------*/
 body {
-    background-image: url('imagen.jpg');
+    background-image: url('imagenes/tortaLogo.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -54,13 +91,24 @@ body > * {
 }
 /*---------------------clase de catalogo---------------------------------------*/
 
-.catalogo-item { /* Contenedor de cada producto */
-    display: flex; /* Muestra imagen e info en fila */
+.catalogo-contenedor { /* Contenedor general del catálogo */
+    display: flex; /* Usa flexbox para organizar filas */
+    flex-wrap: wrap; /* Permite que los elementos bajen a la siguiente línea */
+    gap: 20px; /* Espacio entre filas y columnas */
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+.catalogo-item { /* Cada producto */
+    display: flex; /* Imagen e info en fila */
     align-items: center; /* Centra verticalmente */
-    margin-bottom: 30px; /* Espacio entre productos */
+    width: 48%; /* Ocupa casi la mitad del ancho (2 por fila) */
+    background: rgba(255,255,255,0.8); /* Fondo blanco semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio abajo */
+    box-sizing: border-box; /* Incluye el padding en el ancho */
+    padding: 10px; /* Espacio interno */
 }
 .catalogo-img { /* Imagen del producto */
-    width: 200px; /* Ancho fijo */
+    width: 120px; /* Ancho fijo */
     height: auto; /* Altura automática */
     margin-right: 20px; /* Espacio a la derecha de la imagen */
     border-radius: 10px; /* Bordes redondeados */
@@ -71,13 +119,20 @@ body > * {
 
 /* Responsive para celulares */
 @media (max-width: 600px) { /* Si la pantalla es menor a 600px */
-    .catalogo-item {
+    .catalogo-contenedor {
         flex-direction: column; /* Cambia a columna */
+        gap: 0; /* Sin espacio entre filas */
+    }
+    .catalogo-item {
+        width: 100%; /* Ocupa todo el ancho */
+        flex-direction: column; /* Imagen arriba, info abajo */
         align-items: flex-start; /* Alinea a la izquierda */
+        margin-bottom: 20px; /* Espacio abajo */
     }
     .catalogo-img {
         margin-right: 0; /* Quita el margen derecho */
         margin-bottom: 10px; /* Espacio debajo de la imagen */
         width: 100%; /* Imagen ocupa todo el ancho */
+        max-width: 300px; /* Máximo ancho para no deformar */
     }
 }
