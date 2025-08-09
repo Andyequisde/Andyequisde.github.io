@@ -12,8 +12,8 @@
     <ul id="nav-list"> <!-- Lista de enlaces -->
         <li><a href="index.html">Inicio</a></li>
         <li><a href="catalogo.html">Catalogo</a></li>
-        <li><a href="pedidos.html">Pedidos</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="https://forms.gle/1xgUVaThCYFgxekL7" target="_blank">Pedidos</a></li> <!-- Abre el formulario en una nueva pestaña -->
+        <li><a href="#" id="contacto-link">Contacto</a></li> <!-- Enlace con id -->
         <li><a href="politicas.html">Politicas</a></li>
     </ul>
 </nav>
@@ -27,5 +27,15 @@ function toggleMenu() { // Muestra/oculta el menú en móvil
         <h1>Ej nose 
         </h1>
     </div>
+<!--------------------- Incluye el popup -------------------------->
+<div id="popup-container"></div> <!-- Contenedor para el popup -->
+<script>
+// Carga el HTML del popup
+fetch('popup.html') // Busca el archivo popup.html
+  .then(response => response.text()) // Lo convierte a texto
+  .then(html => { document.getElementById('popup-container').innerHTML = html; }); // Lo inserta en el contenedor
+</script>
+<script src="popup.js"></script> <!-- Incluye el JS del popup -->
+<!---------- fin del popup------------------------------------------>
 </body>
 </html>

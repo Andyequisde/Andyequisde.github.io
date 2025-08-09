@@ -32,28 +32,34 @@
 }
 
 @media (max-width: 600px) { /* Para celulares */
+    .navbar { 
+        position: relative; /* Permite posicionar el menú respecto al navbar */
+        background: #af05a1; /* Fondo solo para la barra superior */
+        z-index: 100; /* Asegura que esté por encima de otros elementos */
+    }
+    .menu-icon { 
+        display: block; /* Muestra el icono hamburguesa */
+        position: relative; /* Permite posicionar el menú respecto al icono */
+        z-index: 102; /* Encima del menú desplegable */
+    }
     .navbar ul { 
         display: none; /* Oculta el menú por defecto */
         flex-direction: column; /* Menú vertical */
+        position: absolute; /* Posiciona el menú respecto al navbar */
+        top: 100%; /* Justo debajo del navbar */
+        left: 0; /* Alineado a la izquierda */
         width: 100%; /* Ocupa todo el ancho */
         background: #af05a1; /* Fondo igual al navbar */
-        position: absolute; /* Posición absoluta */
-        left: 0; /* Alineado a la izquierda */
-        top: 50px; /* Debajo del navbar */
-        z-index: 10; /* Encima del fondo */
+        z-index: 101; /* Encima del contenido, debajo del icono */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Sombra para destacar */
     }
     .navbar ul.show { 
         display: flex; /* Muestra el menú cuando tiene la clase 'show' */
     }
-    .menu-icon { 
-        display: block; /* Muestra el icono hamburguesa */
-    }
-    .navbar { 
-        position: relative; /* Para posicionar el menú */
-    }
     .navbar li {
         text-align: left; /* Alinea texto a la izquierda */
-        padding: 10px 20px; /* Espaciado en los enlaces */
+        padding: 15px 20px; /* Espaciado en los enlaces */
+        border-bottom: 1px solid #fff2; /* Línea divisoria */
     }
 }
 
@@ -118,21 +124,52 @@ body > * {
 }
 
 /* Responsive para celulares */
-@media (max-width: 600px) { /* Si la pantalla es menor a 600px */
-    .catalogo-contenedor {
-        flex-direction: column; /* Cambia a columna */
-        gap: 0; /* Sin espacio entre filas */
+@media (max-width: 600px) { /* Para celulares */
+    .catalogo-item { 
+        flex-direction: column; /* Apila los elementos verticalmente */
+        align-items: stretch; /* Ocupa todo el ancho disponible */
     }
-    .catalogo-item {
+    .catalogo-info {
+        order: 1; /* Muestra la info primero */
         width: 100%; /* Ocupa todo el ancho */
-        flex-direction: column; /* Imagen arriba, info abajo */
-        align-items: flex-start; /* Alinea a la izquierda */
-        margin-bottom: 20px; /* Espacio abajo */
+        text-align: center; /* Centra el texto */
     }
     .catalogo-img {
-        margin-right: 0; /* Quita el margen derecho */
-        margin-bottom: 10px; /* Espacio debajo de la imagen */
+        order: 2; /* Muestra la imagen después del nombre */
         width: 100%; /* Imagen ocupa todo el ancho */
         max-width: 300px; /* Máximo ancho para no deformar */
+        margin: 0 auto 10px auto; /* Centra la imagen y agrega espacio abajo */
+        display: block; /* Asegura que sea un bloque */
     }
+    .catalogo-info h2 {
+        margin-bottom: 10px; /* Espacio debajo del nombre */
+    }
+    .catalogo-info p {
+        margin-top: 10px; /* Espacio arriba de la descripción */
+    }
+}
+/*---------------popup de contacto-------------------------------------*/
+.popup { /* Fondo oscuro semitransparente */
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en pantalla */
+    top: 0; left: 0; width: 100vw; height: 100vh; /* Cubre toda la pantalla */
+    background: rgba(0,0,0,0.5); /* Fondo oscuro */
+    z-index: 999; /* Encima de todo */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+.popup-contenido { /* Caja blanca del popup */
+    background: #fff; /* Fondo blanco */
+    padding: 30px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    max-width: 90vw; /* Máximo ancho */
+    text-align: center; /* Centra el texto */
+    position: relative; /* Para el botón cerrar */
+}
+.cerrar { /* Botón cerrar */
+    position: absolute; /* Posición absoluta */
+    top: 10px; right: 15px; /* Arriba a la derecha */
+    font-size: 2em; /* Tamaño grande */
+    color: #af05a1; /* Color */
+    cursor: pointer; /* Cursor de mano */
 }
